@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>kernbit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <span class="nav-home" onclick="routeTo('home')">Home</span>
+  </nav>
+  <main>
+    <section id="home" class="view-section active">
+      <div class="profile-card">
+        <div class="profile-image">
+          <img src="profile.jpg" alt="Profile Photo">
+        </div>
+        <div class="profile-info">
+          <h1>Akif <span>15 y.o</span></h1>
+          <p class="subtitle">Cyber Security researcher, interested on exploits. <br><span class="pronouns">he/him</span></p>
+          <p class="desc">
+           I love math and chess.
+          </p>
+        </div>
+      </div>
+      <nav class="links-grid">
+        <a href="#" onclick="routeTo('blog')" class="nav-link">Blog</a>
+        <a href="#" onclick="routeTo('gallery')" class="nav-link">Gallery</a>
+        <a href="#" onclick="routeTo('projects')" class="nav-link">Projects</a>
+        <a href="#" onclick="routeTo('socials')" class="nav-link">Socials</a>
+        <a href="#" onclick="routeTo('cv')" class="nav-link">CV</a>
+      </nav>
+      <footer>
+        <span>Made by kernbit</span>
+      </footer>
+    </section>
+    <section id="blog" class="view-section">
+      <div class="blog-card">
+        <span class="tab-label">Blog</span>
+        <div id="blog-list" class="blog-list"></div>
+        <div id="blog-detail" class="blog-detail"></div>
+        <button class="back-btn" onclick="closeBlog()" style="display:none;">← Back to Blog</button>
+      </div>
+      <footer>
+        <span>Made by kernbit</span>
+      </footer>
+    </section>
+    <section id="gallery" class="view-section">
+      <div class="gallery-card">
+        <span class="tab-label">Gallery</span>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+      <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+        <span class="lightbox-close">✕</span>
+      </div>
+      <footer>
+        <span>Made by kernbit</span>
+      </footer>
+    </section>
+    <section id="projects" class="view-section">
+      <div class="projects-header-card">
+        <span class="tab-label">Header</span>
+        <h2>Projects</h2>
+        <p>
+          This is where I will showcase some of the cool projects I've worked on. From kernel development to random hacks and tools, feel free to dive into the details of what I've been up to.<br>
+          <span style="color:#aaa;font-size:1.07em;display:block;margin-top:10px;">(No projects yet. I'll share my work here in the future!)</span>
+        </p>
+      </div>
+      <div class="projects-list-card">
+        <span class="tab-label">Projects</span>
+        <div id="projects-grid" class="projects-grid"></div>
+      </div>
+      <footer>
+        <span>Made by kernbit</span>
+      </footer>
+    </section>
+    <section id="socials" class="view-section">
+      <div class="socials-card">
+        <span class="tab-label">Socials</span>
+        <div class="socials-list">
+          <a href="https://github.com/kernbit" target="_blank" class="social-link">GitHub <span>kernbit</span></a>
+          
+          
+          
+        </div>
+      </div>
+      <footer>
+        <span>Made by kernbit</span>
+      </footer>
+    </section>
+    <section id="cv" class="view-section">
+      <div class="cv-card">
+        <span class="tab-label">CV</span>
+        <div class="cv-content">
+          <p>My CV will be available here soon.<br>You will be able to download it as a PDF.</p>
+        </div>
+      </div>
+      <footer>
+        <span>Made by kernbit</span>
+      </footer>
+    </section>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
