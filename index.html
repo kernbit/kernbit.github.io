@@ -1,50 +1,496 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>kernbit@terminal:~$</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KernBit - Siber Güvenlik Uzmanı</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="noise"></div>
-  <div class="crt-effect"></div>
-  
-  <div class="terminal-container">
-    <div class="terminal-window">
-      <pre id="term-welcome" class="welcome-text"></pre>
-      <div id="term-output" class="term-output"></div>
-      <div class="term-line">
-        <span class="term-prompt"><span class="user">kernbit</span>:<span class="dir">~</span>$</span>
-        <span id="term-input-wrapper">
-          <input type="text" id="term-input" autocomplete="off" autofocus>
-          <span id="term-cursor"></span>
-        </span>
-      </div>
-    </div>
-  </div>
-  
-  <div id="friendsbar" class="friendsbar">
-    <div class="friendsbar-header">FRIENDS</div>
-    <div id="friendslist" class="friendslist">
-      <!-- Friend logos will be placed here -->
-      <div class="friend-logo-container">
-        <img src="friend1.jpg" class="friend-logo" alt="Friend 1">
-        <span class="friend-name">Friend 1</span>
-      </div>
-      <div class="friend-logo-container">
-        <img src="friend2.jpg" class="friend-logo" alt="Friend 2">
-        <span class="friend-name">Friend 2</span>
-      </div>
-      <div class="friend-logo-container">
-        <img src="friend3.jpg" class="friend-logo" alt="Friend 3">
-        <span class="friend-name">Friend 3</span>
-      </div>
-    </div>
-  </div>
-  
-  <script src="main.js"></script>
+    <!-- Matrix Background -->
+    <div class="matrix-bg" id="matrix"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <h2>KernBit</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link" data-tr="Ana Sayfa" data-en="Home">Ana Sayfa</a>
+                <a href="#about" class="nav-link" data-tr="Hakkımda" data-en="About">Hakkımda</a>
+                <a href="#skills" class="nav-link" data-tr="Yetenekler" data-en="Skills">Yetenekler</a>
+            
+                
+                <a href="#contact" class="nav-link" data-tr="İletişim" data-en="Contact">İletişim</a>
+                <div class="language-toggle">
+                    <button id="langToggle" onclick="toggleLanguage()">
+                        <i class="fas fa-globe"></i> EN
+                    </button>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="typing-container">
+                    <span class="terminal-prompt">kernbit@security:~$ </span>
+                    <span class="typing-text" data-tr="whoami" data-en="whoami">whoami</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="KernBit">KernBit</span>
+                </h1>
+                <div class="hero-subtitle-container">
+                    <p class="hero-subtitle" data-tr="Siber Güvenlik Uzmanı" data-en="Cybersecurity Specialist">
+                        Siber Güvenlik Uzmanı
+                    </p>
+                    <p class="hero-description" data-tr="Saçma şeyler, programlamayı severim" data-en="I love programming and silly things">
+                        Saçma şeyler, programlamayı severim
+                    </p>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-code"></i>
+                        <span data-tr="Projelerimi Gör" data-en="View Projects">Projelerimi Gör</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        <span data-tr="İletişime Geç" data-en="Contact Me">İletişime Geç</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <span class="terminal-title">security_scan.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">root@kali:~# </span>
+                            <span class="command">nmap -sS -O target.com</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Starting Nmap scan...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output success">PORT     STATE SERVICE</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output success">22/tcp   open  ssh</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output success">80/tcp   open  http</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output warning">443/tcp  open  https</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="cursor">█</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-icons">
+                    <div class="floating-icon rust">
+                        <i class="fab fa-rust"></i>
+                    </div>
+                    <div class="floating-icon c">
+                        <span>C</span>
+                    </div>
+                    <div class="floating-icon cpp">
+                        <span>C++</span>
+                    </div>
+                    <div class="floating-icon security">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-user-secret"></i>
+                <span data-tr="Hakkımda" data-en="About Me">Hakkımda</span>
+            </h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="info-card">
+                        <h3 data-tr="Ben kimim?" data-en="Who Am I?">Ben kimim?</h3>
+                        <p data-tr="Merhaba! Ben KernBit, tutkulu bir siber güvenlik uzmanıyım. Sistem güvenliği, penetrasyon testleri ve güvenlik açığı analizi konularında uzmanlaşmış durumdayım. Rust, C ve C++ gibi sistem programlama dillerini kullanarak güvenli ve performanslı yazılımlar geliştirmeyi seviyorum. Saçma şeyler yaparak öğrenmeyi ve sınırları zorlamayı seviyorum!" 
+                           data-en="Hello! I'm KernBit, a passionate cybersecurity specialist. I specialize in system security, penetration testing, and vulnerability analysis. I love developing secure and performant software using system programming languages like Rust, C, and C++. I love learning by doing silly things and pushing boundaries!">
+                            Merhaba! Ben KernBit, tutkulu bir siber güvenlik uzmanıyım. Sistem güvenliği, penetrasyon testleri ve güvenlik açığı analizi konularında uzmanlaşmış durumdayım. Rust, C ve C++ gibi sistem programlama dillerini kullanarak güvenli ve performanslı yazılımlar geliştirmeyi seviyorum. Saçma şeyler yaparak öğrenmeyi ve sınırları zorlamayı seviyorum!
+                        </p>
+                    </div>
+                    
+                    <div class="specializations">
+                        <h3 data-tr="Uzmanlık Alanlarım" data-en="My Specializations">Uzmanlık Alanlarım</h3>
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <i class="fas fa-shield-virus"></i>
+                                <span data-tr="Malware Analizi" data-en="Malware Analysis">Malware Analizi</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-bug"></i>
+                                <span data-tr="Penetrasyon Testleri" data-en="Penetration Testing">Penetrasyon Testleri</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-network-wired"></i>
+                                <span data-tr="Ağ Güvenliği" data-en="Network Security">Ağ Güvenliği</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-code"></i>
+                                <span data-tr="Sistem Programlama" data-en="System Programming">Sistem Programlama</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3>0<h3>
+                        <p data-tr="Keşfedilen Açık" data-en="Vulnerabilities Found">Keşfedilen Açık</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>0</h3>
+                        <p data-tr="Güvenlik Projesi" data-en="Security Projects">Güvenlik Projesi</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <h3>∞</h3>
+                        <p data-tr="Kahve & Red Bull" data-en="Coffee & Red Bull">Kahve</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-tools"></i>
+                <span data-tr="Teknik Yetenekler" data-en="Technical Skills">Teknik Yetenekler</span>
+            </h2>
+            <div class="skills-content">
+                <div class="skills-category">
+                    <h3>
+                        <i class="fas fa-code"></i>
+                        <span data-tr="Programlama Dilleri" data-en="Programming Languages">Programlama Dilleri</span>
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item rust">
+                            <div class="skill-icon">
+                                <i class="fab fa-rust"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Rust</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item c">
+                            <div class="skill-icon">
+                                <span class="c-icon">C</span>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">C</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item cpp">
+                            <div class="skill-icon">
+                                <span class="cpp-icon">C++</span>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">C++</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>
+                        <i class="fas fa-globe"></i>
+                        <span data-tr="Frontend Teknolojileri" data-en="Frontend Technologies">Frontend Teknolojileri</span>
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item html">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">HTML5</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item css">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">CSS3</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item js">
+                            <div class="skill-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>
+                        <i class="fas fa-shield-alt"></i>
+                        <span data-tr="Siber Güvenlik Araçları" data-en="Cybersecurity Tools">Siber Güvenlik Araçları</span>
+                    </h3>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <i class="fas fa-terminal"></i>
+                            <span>Nmap</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-search"></i>
+                            <span>Wireshark</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-bug"></i>
+                            <span>Metasploit</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-key"></i>
+                            <span>Burp Suite</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-linux"></i>
+                            <span>Kali Linux</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-eye"></i>
+                            <span>OWASP ZAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-satellite-dish"></i>
+                <span data-tr="İletişim Kanalları" data-en="Communication Channels">İletişim Kanalları</span>
+            </h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-text">
+                        <h3 data-tr="Benimle İletişime Geçin" data-en="Get In Touch">Benimle İletişime Geçin</h3>
+                        <p data-tr="Siber güvenlik projeleri, iş birlikleri veya sadece teknoloji hakkında sohbet etmek için bana ulaşabilirsiniz. Her zaman yeni fırsatlara ve saçma fikirlere açığım!" data-en="You can reach me for cybersecurity projects, collaborations, or just to chat about technology. I'm always open to new opportunities and silly ideas!">
+                            Siber güvenlik projeleri, iş birlikleri veya sadece teknoloji hakkında sohbet etmek için bana ulaşabilirsiniz. Her zaman yeni fırsatlara ve saçma fikirlere açığım!
+                        </p>
+                    </div>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Email</h4>
+                                <a href="mailto:kernbit@protonmail.com">kernbit@protonmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/akif-t-90b910368/" target="_blank">linkedin.com/in/kernbit</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/kernbit" target="_blank">github.com/kernbit</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <div class="method-info">
+                                <h4>Twitter</h4>
+                                <a href="https://twitter.com/kernbit_sec" target="_blank">@kernbit_sec</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="terminal-contact">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <span class="terminal-title">send_message.sh</span>
+                        </div>
+                        <div class="terminal-body">
+                            <form class="contact-form" id="contactForm">
+                                <div class="terminal-line">
+                                    <span class="prompt">kernbit@contact:~$ </span>
+                                    <span>echo "Yeni mesaj oluşturuluyor..."</span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="name">
+                                        <span class="prompt">İsim > </span>
+                                    </label>
+                                    <input type="text" id="name" name="name" required placeholder="Adınızı girin...">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">
+                                        <span class="prompt">Email > </span>
+                                    </label>
+                                    <input type="email" id="email" name="email" required placeholder="email@domain.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">
+                                        <span class="prompt">Konu > </span>
+                                    </label>
+                                    <input type="text" id="subject" name="subject" required placeholder="Mesaj konusu...">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">
+                                        <span class="prompt">Mesaj > </span>
+                                    </label>
+                                    <textarea id="message" name="message" rows="4" required placeholder="Mesajınızı yazın..."></textarea>
+                                </div>
+                                
+                                <div class="terminal-line">
+                                    <button type="submit" class="send-btn">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span data-tr="Mesajı Gönder" data-en="Send Message">Mesajı Gönder</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>KernBit</span>
+                    </div>
+                    <p data-tr="Siber güvenlik tutkunu. Kod yazarak dünyayı daha güvenli yapmaya çalışıyorum." data-en="Cybersecurity enthusiast. Trying to make the world safer by writing code.">
+                        Siber güvenlik tutkunu. Kod yazarak dünyayı daha güvenli yapmaya çalışıyorum.
+                    </p>
+                </div>
+                
+                <div class="footer-center">
+                    <div class="footer-links">
+                        <a href="#home" data-tr="Ana Sayfa" data-en="Home">Ana Sayfa</a>
+                        <a href="#about" data-tr="Hakkımda" data-en="About">Hakkımda</a>
+                        
+                        <a href="#contact" data-tr="İletişim" data-en="Contact">İletişim</a>
+                    </div>
+                </div>
+                
+                <div class="footer-right">
+                    <div class="social-links">
+                        <a href="https://github.com/kernbit" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/kernbit" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+   
+                        <a href="mailto:kernbit@protonmail.com" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 KernBit. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span></p>
+                </div>
+                <div class="footer-tech">
+                    <span data-tr="💻 HTML, CSS, JS ile yapılmıştır" data-en="💻  HTML, CSS, JS">💻 Rust, C, C++, HTML, CSS, JS ile yapılmıştır</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
